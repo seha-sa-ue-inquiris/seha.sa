@@ -1,0 +1,3057 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta name="google-site-verification" content="SXM-GBwV54gm_ST7j29Xt5w1T3AODQE3xs3DZYm_b5Y" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> صحة - منصة الخدمات الصحية seha.sa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* Global Styles */
+    * { 
+      font-family: 'Cairo', sans-serif !important; 
+      box-sizing: border-box; 
+    }
+    
+    body { 
+      background-color: #ffffff; 
+      margin: 0; 
+      padding: 30px 0 0 0; 
+      direction: rtl; 
+    }
+    
+    /* Header Section */
+    .top-header { 
+      background-color: #ffffff; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 10px 20px; 
+      position: fixed; 
+      top: -100px; 
+      left: 0; 
+      right: 0; 
+      opacity: 0; 
+      z-index: 1000; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+      transition: top 0.8s ease, opacity 0.8s ease; 
+    }
+    
+    .top-header.show { 
+      top: 0; 
+      opacity: 1; 
+    }
+    
+    .hamburger-icon { 
+      font-size: 26px; 
+      color: #67b3f5; 
+      cursor: pointer; 
+    }
+    
+    .brand-logo { 
+      height: 48px; 
+      object-fit: contain; 
+    }
+    
+    /* Main Content Description */
+    .primary-description {
+      font-size: 14px;
+      white-space: normal;
+      line-height: 1.6;
+      margin: 10px 20px 20px;
+    }
+    
+    @media (max-width: 400px) {
+      .primary-description {
+        font-size: 12px;
+        line-height: 1.5;
+      }
+    }
+
+    /* Main Title */
+    h1 { 
+      color: #2e6fb3; 
+      text-align: center; 
+      font-weight: 700; 
+      font-size: 35px; 
+      margin-top: 40px; 
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
+      position: relative; 
+      display: inline-block; 
+      width: auto; 
+    }
+    
+    h1::before { 
+      content: ""; 
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      background-image: url('https://i.postimg.cc/mktdLGnp/image.png'); 
+      background-size: cover; 
+      background-repeat: no-repeat; 
+      background-position: center; 
+      width: calc(100% + 20px); 
+      height: 80%; 
+      z-index: -1; 
+    }
+    
+    /* Paragraph Styles */
+    p { 
+      color: #6d7781; 
+      text-align: center; 
+      font-size: 16px; 
+      margin: 10px 20px 30px; 
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05); 
+    }
+    
+    /* Form Input Styles */
+    .form-input-container { 
+      position: relative; 
+      margin-bottom: 1.5em; 
+    }
+    
+    .form-input-field { 
+      width: calc(100% - 30px); 
+      display: block; 
+      padding: 3px 12px; 
+      font-size: 14.5px; 
+      margin: 10px auto; 
+      border: 1px solid #ccc; 
+      border-radius: 8px; 
+      background-color: white; 
+      text-align: right; 
+      transition: border-color 0.3s ease; 
+    }
+    
+    .form-input-field:focus { 
+      border-color: #67b3f5; 
+      outline: none; 
+    }
+    
+    /* Button Styles */
+    .primary-btn, .secondary-btn, .tertiary-btn, .quaternary-btn { 
+      display: block; 
+      margin: 15px auto; 
+      padding: 6px 10px; 
+      background-color: #2e6fb9; 
+      color: white; 
+      border: none; 
+      border-radius: 8px; 
+      font-size: 12px; 
+      width: 120px; 
+      cursor: pointer; 
+      position: relative; 
+      overflow: hidden; 
+      transition: background-color 0.2s ease; 
+    }
+    
+    /* Loading Button State */
+    .primary-btn.loading {
+      background-color: #24568f; 
+      cursor: wait;
+    }
+    
+    /* Error Message Styles */
+    .error-message-tab { 
+      background-color: #ffe5e5; 
+      color: #990000; 
+      text-align: center; 
+      padding: 10px; 
+      margin: 10px auto; 
+      border-radius: 5px; 
+      width: calc(100% - 40px); 
+      display: none; 
+    }
+    
+    /* Result Display Box */
+    .results-display-box { 
+      background-color: #f0f0f0; 
+      padding: 20px; 
+      margin: 40px auto 20px; 
+      border-radius: 8px; 
+      width: calc(100% - 40px); 
+      text-align: center; 
+      display: none; 
+    }
+    
+    /* Information Labels */
+    .information-label { 
+      font-weight: bold; 
+      margin-top: 10px; 
+    }
+    
+    .information-data { 
+      margin-bottom: 15px; 
+    }
+    
+    /* Footer Section */
+    .page-footer { 
+      background-color: #2e6fb2; 
+      color: white; 
+      padding: 20px 15px 60px 20px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: flex-start; 
+      text-align: center; 
+      font-size: 14px; 
+      direction: rtl; 
+      min-height: 180px; 
+      gap: 15px; 
+      position: relative; 
+    }
+    
+    .page-footer img.footer-brand-logo { 
+      height: 75px; 
+      filter: none; 
+      margin-bottom: 15px; 
+    }
+    
+    .footer-description-text { 
+      font-size: 13px; 
+      line-height: 1.7; 
+      white-space: normal; 
+      max-width: 700px; 
+    }
+    
+    /* Menu Title */
+    .primary-menu-title { 
+      font-weight: 700; 
+      font-size: 15px; 
+      margin-top: 30px; 
+      position: relative; 
+      display: inline-block; 
+      color: white; 
+      cursor: default; 
+    }
+    
+    .primary-menu-title::after { 
+      content: ""; 
+      position: absolute; 
+      bottom: -8px; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      width: 130%; 
+      height: 3px; 
+      background-color: #a3c1e5; 
+      border-radius: 2px; 
+    }
+    
+    /* Footer Links */
+    .footer-navigation-links { 
+      margin-top: 5px; 
+      font-size: 13px; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 6px; 
+      user-select: none; 
+      width: 100%; 
+      max-width: 320px; 
+      padding: 0 10px; 
+    }
+    
+    .footer-navigation-links div { 
+      cursor: default; 
+      color: #ffffff; 
+      font-weight: normal; 
+      padding-bottom: 4px; 
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
+      margin: 0 8px; 
+    }
+    
+    /* Popup Menu */
+    .navigation-popup-menu { 
+      position: fixed; 
+      top: 60px; 
+      left: 0; 
+      width: 100%; 
+      height: 50vh; 
+      background-color: #f8fcff; 
+      display: none; 
+      flex-direction: column; 
+      justify-content: flex-start; 
+      align-items: center; 
+      padding-top: 30px; 
+      z-index: 999; 
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); 
+    }
+    
+    .navigation-popup-menu .popup-menu-item { 
+      font-size: 15px; 
+      color: #226699; 
+      margin: 15px 0; 
+      cursor: pointer; 
+      text-decoration: underline; 
+    }
+    
+    .navigation-popup-menu .popup-menu-login { 
+      background-color: #3c8dc4; 
+      color: white; 
+      padding: 8px 20px; 
+      border-radius: 12px; 
+      margin-top: 12px; 
+      font-size: 15px; 
+      cursor: pointer; 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      text-decoration: none; 
+    }
+    
+    .navigation-popup-menu .popup-menu-login span { 
+      margin-right: 8px; 
+    }
+    
+    .navigation-popup-menu .popup-close-btn { 
+      position: absolute; 
+      top: 10px; 
+      right: 15px; 
+      font-size: 24px; 
+      color: #333; 
+      cursor: pointer; 
+    }
+    
+    /* Button Display States */
+    .tertiary-btn, .quaternary-btn { 
+      display: none; 
+    }
+    
+    /* Text Formatting */
+    .text-bold { 
+      font-weight: bold; 
+      color: black; 
+    }
+    
+    .text-normal { 
+      font-weight: normal; 
+      color: black; 
+    }
+    
+    .information-label.text-bold { 
+      margin-bottom: 5px; 
+    }
+    
+    .information-label.text-normal { 
+      margin-top: 10px; 
+    }
+    
+    /* Contact Section */
+    .contact-section-title { 
+      font-weight: 700; 
+      font-size: 15px; 
+      margin-top: 20px; 
+      color: white; 
+    }
+    
+    .contact-divider-line { 
+      width: 160px; 
+      height: 4px; 
+      background-color: #a3c1e5; 
+      margin: 6px auto 2px auto; 
+      border-radius: 1px; 
+    }
+    
+    .contact-information { 
+      font-size: 14px; 
+      line-height: 1.6; 
+      color: white; 
+      max-width: 320px; 
+      text-align: center; 
+      user-select: none; 
+    }
+
+    /* Loading Spinner Animation */
+    .spinner-loading {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 8px; 
+      vertical-align: middle;
+      display: none; 
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Empty Field Error Styling */
+    .empty-field-error-message {
+      background-color: #feeeee; 
+      color: #a00000; 
+      text-align: center;
+      padding: 10px;
+      margin: 15px auto 10px;
+      border-radius: 5px;
+      width: calc(100% - 40px);
+      font-weight: normal; 
+      display: none; 
+      transition: margin-top 0.3s ease; 
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Header Navigation -->
+  <div class="top-header" id="mainHeader">
+    <img src="https://i.postimg.cc/cHQphC4q/image.png" alt="شعار صحة" class="brand-logo" />
+    <div class="hamburger-icon" id="hamburgerMenuIcon" onclick="toggleNavigationMenu()">&#9776;</div>
+  </div>
+
+  <!-- Navigation Popup Menu -->
+  <div class="navigation-popup-menu" id="navigationPopupMenu">
+    <div class="popup-close-btn" onclick="toggleNavigationMenu()">X</div>
+    <a href="https://www.seha.sa/ui#/services" class="popup-menu-item" onclick="toggleNavigationMenu()">الخدمات</a>
+    <a href="https://www.seha.sa/ui#/inquiries" class="popup-menu-item" onclick="toggleNavigationMenu()">الاستعلامات</a>
+    <a href="https://www.seha.sa/ui#/iamredirection/1" class="popup-menu-item" onclick="toggleNavigationMenu()">إنشاء حساب</a>
+    <a href="https://www.seha.sa/ui#/account/login" class="popup-menu-login" onclick="toggleNavigationMenu()"><span>👨‍💼</span>تسجيل الدخول</a>
+  </div>
+
+  <!-- Main Content Section -->
+  <div style="text-align: center;">
+    <h1>الإجازات المرضية</h1>
+  </div>
+  
+  <p class="primary-description">
+    خدمة الاستعلام عن الإجازات المرضية تتيح لك الاستعلام عن حالة طلبك للإجازة ويمكنك طباعتها عن طريق تطبيق صحتي
+  </p>
+
+  <!-- Error Message for Empty Fields -->
+  <div id="emptyFieldsErrorMessage" class="empty-field-error-message">فضلا اكتب الرمز</div>
+
+  <!-- Form Input Fields -->
+  <div class="form-input-container" id="serviceCodeContainer">
+    <input id="serviceCode" type="text" class="form-input-field" placeholder="رمز الخدمة" maxlength="14" oninput="hideEmptyFieldError()" />
+  </div>
+  <div class="form-input-container" id="identityNumberContainer">
+    <input id="identityNumber" type="text" class="form-input-field" placeholder="رقم الهوية / الإقامة" maxlength="11" inputmode="text" oninput="hideEmptyFieldError()" />
+  </div>
+
+  <!-- Error Tab for Incorrect Data -->
+  <div id="errorMessageTab" class="error-message-tab">خطأ في البيانات</div>
+
+  <!-- Search Button -->
+  <button class="primary-btn" id="searchButton" onclick="validateAndCheckData()">
+    <span id="searchButtonText">استعلام</span>
+    <span id="loadingSpinnerElement" class="spinner-loading"></span>
+  </button>
+  
+  <!-- Back Button -->
+  <a href="https://www.seha.sa/ui#/inquiries" class="secondary-btn" id="backButton" style="text-decoration: none; display: block; text-align: center;">رجوع للاستعلامات</a>
+
+  <!-- Results Display -->
+  <div id="resultsDisplayBox" class="results-display-box"></div>
+
+  <!-- Additional Action Buttons -->
+  <button class="tertiary-btn" id="newSearchButton" onclick="performNewSearch()">استعلام جديد</button>
+  <a href="https://www.seha.sa/ui#/inquiries" class="quaternary-btn" id="backToListButton" style="text-decoration: none; display: none; text-align: center;">رجوع للاستعلامات</a>
+
+  <!-- Footer Section -->
+  <div class="page-footer">
+    <img src="https://i.postimg.cc/2SFJ3NqW/Screenshot-20251117-074153-Chrome.png" alt="شعار صحة" class="footer-brand-logo" style="margin-top: 60px;" />
+    <div class="mine-text">
+      منصة صحة تخدم جميع المنشأت الطبية من خلال تقديم الخدمات الصحية إلكترونياً لجميع المنشأت الطبية وتسعى إلى توحيد وأتمتة الاجراءات والخدمات بما في دوره رفع جودة الاداء وخفض التكاليف.
+    </div>
+    <div class="primary-menu-title">القائمة الرئيسية</div>
+    <div class="footer-navigation-links">
+      <div><a href="https://www.seha.sa/ui#/services" style="color: white; text-decoration: none;">الخدمات</a></div>
+      <div><a href="https://www.seha.sa/ui#/inquiries" style="color: white; text-decoration: none;">الاستعلامات</a></div>
+      <div><a href="https://www.seha.sa/ui#/faq" style="color: white; text-decoration: none;">الأسئلة الشائعة</a></div>
+      <div><a href="https://www.seha.sa/ui#/ContactUs" style="color: white; text-decoration: none;">تواصل معنا</a></div>
+    </div>
+    <div class="contact-section-title">تواصل معنا</div>
+    <div class="contact-divider-line"></div>
+    <div class="contact-section" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; width: 100%; max-width: 800px;">
+      <div style="text-align: right;">
+        <div class="contact-icon">
+          <i class=""></i>
+          <span> اتصال 920002005</span>
+        </div>
+        <div class="contact-icon">
+          <i class=""></i>
+          <span>  البريد الاكتروني support@seha.sa</span>
+        </div>
+        <div class="contact-icon">
+          <i class=""></i>
+          <span>وتساب 920002005</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <img src="https://i.postimg.cc/3R6fzK6y/lean-logo.png" style="height: 50px;" alt="شعار لين" />
+        <div style="height: 50px; border-right: 2px solid white;"></div>
+        <img src="https://i.postimg.cc/3JWJg9jD/moh-logo.png" style="height: 50px;" alt="شعار الصحة" />
+      </div>
+      <div class="working-hours">
+        أوقات العمل : الأحد حتى الخميس 8 ص - 11 م
+        <br><br><br>
+      </div>
+    </div>
+    <div class="footer-bottom-text">
+      منصة صحة معتمدة من قبل وزارة الصحة 2025<br>
+      سياسة الخصوصية وشروط الإستخدام | دليل الاستخدام
+    </div>
+  </div>
+
+  <script>
+    // Navigation Menu Toggle Function
+    function toggleNavigationMenu() {
+      const navigationMenu = document.getElementById('navigationPopupMenu');
+      navigationMenu.style.display = navigationMenu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // Initialize Application Data
+    function initializeApplicationData() {
+      const medicalLeaveData = [
+        {
+          leaveCode: "GSL55886151331",
+          idNumber: "1101879896",
+          name: "   أسامة عبيداللّه عبداللّه علي العلياني         ",
+          from: "2025-06-11",
+          to: "2025-06-11",
+          days: "1",
+          doctor: "   علي بكر    ",
+          title: "طب بشري ",
+          date: "2025-06-11"
+        },
+        {
+          leaveCode: "GSL55886151331",
+          idNumber: "1068583424",
+          name: "   فاطمه يحي عامر العسيري         ",
+          from: "2025-06-11",
+          to: "2025-06-11",
+          days: "1",
+          doctor: " علي فتح     ",
+          title: "طب بشري",
+          date: "2025-06-11"
+        },
+        {
+          leaveCode: "GSL55886151331",
+          idNumber: "2133546982",
+          name: "      إبراهيم علي محمد الزرقاني   ",
+          from: "2025-06-11",
+          to: "2025-06-17",
+          days: "7",
+          doctor: "  محمد الشهراني  ",
+          title: " طب بشري ",
+          date: "2025-06-11"
+        },
+        {
+          leaveCode: "GSL25060111760",
+          idNumber: "1097131021",
+          name: "    هيف ظافر آل سليم     ",
+          from: "2025-06-12",
+          to: "2025-06-12",
+          days: "1",
+          doctor: "محمد جمال خلف   ",
+          title: "طب بشري ",
+          date: "2025-06-12"
+        },
+        {
+          leaveCode: "GSL25060111760",
+          idNumber: "1122828492",
+          name: "    عماد جمعان علي جيزاني      ",
+          from: "2025-06-13",
+          to: "2025-06-13",
+          days: "1",
+          doctor: "  علي فتح   ",
+          title: "طب بشري ",
+          date: "2025-06-13"
+        },
+        {
+          leaveCode: "GSL25060111760",
+          idNumber: "1093345757",
+          name: "      منى علي جابر جعفري      ",
+          from: "2025-06-13",
+          to: "2025-06-13",
+          days: "1",
+          doctor: "  محمد جمال خلف     ",
+          title: "طب بشري ",
+          date: "2025-06-13"
+        },
+        {
+          leaveCode: "GSL25060111760",
+          idNumber: "1135758827",
+          name: "   وليد علي حسن عسيري      ",
+          from: "2025-06-11",
+          to: "2025-06-11",
+          days: "1",
+          doctor: "  علي فتح   ",
+          title: "طب بشري ",
+          date: "2025-06-11"
+        },
+        {
+          leaveCode: "GSL25060111760",
+          idNumber: "1125336295",
+          name: "   احمد عبدالرزاق احمد شيبان       ",
+          from: "2025-06-14",
+          to: "2025-06-14",
+          days: "1",
+          doctor: "  علي فتح   ",
+          title: "طب بشري ",
+          date: "2025-06-14"
+        },
+        {
+          leaveCode: "GSL25065528128",
+          idNumber: "1133692424",
+          name: "   شهد محمد مرزوق الجدعاني         ",
+          from: "2025-06-14",
+          to: "2025-06-14",
+          days: "1",
+          doctor: "طارق جابر     ",
+          title: "طب بشري ",
+          date: "2025-06-14"
+        },
+        {
+          leaveCode: "GPL88223791200",
+          idNumber: "1122139015",
+          name: "   خالد عزيز محمد المالكي      ",
+          from: "2025-06-13",
+          to: "2025-06-14",
+          days: "2",
+          doctor: "  هشام العزب   ",
+          title: "طب بشري ",
+          date: "2025-06-13"
+        },
+        {
+          leaveCode: "GSL25060111760",
+          idNumber: "1090361872",
+          name: "     هنادي محمد بالغيث القرني       ",
+          from: "2025-06-10",
+          to: "2025-06-10",
+          days: "1",
+          doctor: "أمان الله خان   ",
+          title: "طب بشري ",
+          date: "2025-06-10"
+        },
+        {
+          leaveCode: "GPL88223791200",
+          idNumber: "1090361872",
+          name: "   هنادي محمد بالغيث القرني         ",
+          from: "2025-06-15",
+          to: "2025-06-15",
+          days: "1",
+          doctor: "  أمان الله خان   ",
+          title: "طب بشري ",
+          date: "2025-06-15"
+        },
+        {
+          leaveCode: "GSL24844512328",
+          idNumber: "1118202231",
+          name: "      نواف سعيد فازع المطيري      ",
+          from: "2025-05-27",
+          to: "2025-05-27",
+          days: "1",
+          doctor: "محمد جمال خلف   ",
+          title: "طب بشري ",
+          date: "2025-05-27"
+        },
+        {
+          leaveCode: "GSL25065528128",
+          idNumber: "1118202231",
+          name: "   نواف سعيد فازع المطيري         ",
+          from: "2025-06-11",
+          to: "2025-06-12",
+          days: "2",
+          doctor: "محمد جمال خلف   ",
+          title: "طب بشري ",
+          date: "2025-06-11"
+        },
+        {
+          leaveCode: "GPL88223791200",
+          idNumber: "1118202231",
+          name: "   نواف سعيد فازع المطيري        ",
+          from: "2025-06-03",
+          to: "2025-06-03",
+          days: "1",
+          doctor: "محمد جمال خلف   ",
+          title: "طب بشري ",
+          date: "2025-06-03"
+        },
+        {
+          leaveCode: "GSL88832169584",
+          idNumber: "1093345757",
+          name: "   منى علي جابر جعفري         ",
+          from: "2025-06-04",
+          to: "2025-06-04",
+          days: "1",
+          doctor: "  شيخ اخلاق   ",
+          title: "طب بشري ",
+          date: "2025-06-04"
+        },
+        {
+          leaveCode: "GSL96543180027",
+          idNumber: "1093345757",
+          name: "      منى علي جابر جعفري      ",
+          from: "2025-06-02",
+          to: "2025-06-02",
+          days: "1",
+          doctor: "  شيخ اخلاق   ",
+          title: "طب بشري ",
+          date: "2025-06-02"
+        },
+        {
+          leaveCode: "GSL25060111760",
+          idNumber: "1127935219",
+          name: "      زياد عبدالكريم سالم الزهراني      ",
+          from: "2025-05-29",
+          to: "2025-05-29",
+          days: "1",
+          doctor: "احمد سالم جعمان السعدي     ",
+          title: "طب بشري ",
+          date: "2025-05-29"
+        },
+        {
+          leaveCode: "GSL67987664312",
+          idNumber: "1127935219",
+          name: " زياد عبدالكريم سالم الزهراني   ",
+          from: "2025-05-22",
+          to: "2025-05-22",
+          days: "1",
+          doctor: "  احمد سالم جعمان السعدي   ",
+          title: "طب بشري ",
+          date: "2025-05-22"
+        },
+        {
+          leaveCode: "GSL87854566931",
+          idNumber: "1127935219",
+          name: "   زياد عبدالكريم سالم الزهراني      ",
+          from: "2025-05-15",
+          to: "2025-05-15",
+          days: "1",
+          doctor: "  احمد سالم جعمان السعدي   ",
+          title: "طب بشري ",
+          date: "2025-05-15"
+        },
+        {
+          leaveCode: "GSL25060111760",
+          idNumber: "1107272831",
+          name: "   رهام قاسم عثمان جتيم      ",
+          from: "2025-06-23",
+          to: "2025-06-30",
+          days: "8",
+          doctor: "طارق جابر    ",
+          title: "طب بشري ",
+          date: "2025-06-23"
+        },
+        {
+          leaveCode: "GSL87854566931",
+          idNumber: "1069602009",
+          name: "      عماد عزيز محمد المالكي       ",
+          from: "2025-05-31",
+          to: "2025-05-31",
+          days: "1",
+          doctor: "  هشام العزب   ",
+          title: "طب بشري ",
+          date: "2025-05-31"
+        },
+        {
+          leaveCode: "GSL25060111760",
+          idNumber: "1122428798",
+          name: "   ابتسام علي محمد الشهري      ",
+          from: "2025-05-31",
+          to: "2025-05-31",
+          days: "1",
+          doctor: "  هشام العزب   ",
+          title: "طب بشري ",
+          date: "2025-05-31"
+        },
+        {
+          leaveCode: "GSL88885586231",
+          idNumber: "1122428798",
+          name: "      ابتسام علي محمد الشهري      ",
+          from: "2025-06-04",
+          to: "2025-06-04",
+          days: "1",
+          doctor: "  هشام العزب   ",
+          title: "طب بشري ",
+          date: "2025-06-04"
+        },
+        {
+          leaveCode: "GPL88632395136",
+          idNumber: "1122428798",
+          name: "      ابتسام علي محمد الشهري      ",
+          from: "2025-06-10",
+          to: "2025-06-10",
+          days: "1",
+          doctor: "  هشام العزب   ",
+          title: "طب بشري ",
+          date: "2025-06-10"
+        },
+        {
+          leaveCode: "GSL66346495423",
+          idNumber: "1122428798",
+          name: "      ابتسام علي محمد الشهري      ",
+          from: "2025-06-12",
+          to: "2025-06-12",
+          days: "1",
+          doctor: "  هشام العزب   ",
+          title: "طب بشري ",
+          date: "2025-06-12"
+        },
+        {
+          leaveCode: "GSL99646453216",
+          idNumber: "1122428798",
+          name: "      ابتسام علي محمد الشهري      ",
+          from: "2025-06-17",
+          to: "2025-06-18",
+          days: "2",
+          doctor: "  هشام العزب   ",
+          title: "طب بشري ",
+          date: "2025-06-17"
+        },
+        {
+          leaveCode: "GSL88885586231",
+          idNumber: "1104593346",
+          name: "نهى طارق ابراهيم الميمان",
+          from: "2025-06-20",
+          to: "2025-06-21",
+          days: "2",
+          doctor: "  هشام العزب   ",
+          title: "طب بشري ",
+          date: "2025-06-20"
+        },
+        {
+          leaveCode: "GSL88885586231",
+          idNumber: "1122428798",
+          name: "      ابتسام علي محمد الشهري      ",
+          from: "2025-06-04",
+          to: "2025-06-04",
+          days: "1",
+          doctor: "  هشام العزب   ",
+          title: "طب بشري ",
+          date: "2025-06-04"
+        },
+        {
+          leaveCode: "GSL88885586231",
+          idNumber: "1084437860",
+          name: "        ابراهيم عبدالله الجارالله الجارالله       ",
+          from: "2025-05-18",
+          to: "2025-05-18",
+          days: "1",
+          doctor: "  هشام العزب   ",
+          title: "طب بشري ",
+          date: "2025-05-18"
+        },
+        {
+          leaveCode: "GSL59953212832",
+          idNumber: "1068583424",
+          name: "   فاطمه يحي عامر العسيري         ",
+          from: "2025-06-21",
+          to: "2025-06-21",
+          days: "1",
+          doctor: " هشام العزب      ",
+          title: "طب بشري",
+          date: "2025-06-21"
+        },
+        {
+          leaveCode: "GSL59953212832",
+          idNumber: "1090361708",
+          name: "هناء محمد بالغيث القرني",
+          from: "2025-06-21",
+          to: "2025-06-21",
+          days: "1",
+          doctor: " بشير احمد خان الله ديلو       ",
+          title: "طب بشري",
+          date: "2025-06-21"
+        },
+        {
+          leaveCode: "GPL88055468431",
+          idNumber: "1090361872",
+          name: "هنادي محمد بالغيث القرني",
+          from: "2025-06-22",
+          to: "2025-06-22",
+          days: "1",
+          doctor: "سيده سنا إقبال",
+          title: "طب بشري",
+          date: "2025-06-22"
+        },
+        {
+          leaveCode: "GSL59953212832",
+          idNumber: "1133692424",
+          name: "   شهد محمد مرزوق الجدعاني            ",
+          from: "2025-06-21",
+          to: "2025-06-21",
+          days: "1",
+          doctor: "  سيده نسا إقبال      ",
+          title: "طب بشري",
+          date: "2025-06-21"
+        },
+        {
+          leaveCode: "GSL5996632183",
+          idNumber: "1099372318",
+          name: "مؤيد جمعان علي جيراني ",
+          from: "2025-06-24",
+          to: "2025-06-24",
+          days: "1",
+          doctor: "علي فتح",
+          title: "طب بشري",
+          date: "2025-06-24"
+        },
+        {
+          leaveCode: "GSL59953212832",
+          idNumber: "1123455279",
+          name: "   سند سلطان سند الرقاص            ",
+          from: "2025-05-11",
+          to: "2025-05-11",
+          days: "1",
+          doctor: " هشام العزب      ",
+          title: "طب بشري",
+          date: "2025-01-11"
+        },
+        {
+          leaveCode: "GSL59953889976",
+          idNumber: "1123455279",
+          name: "   سند سلطان سند الرقاص            ",
+          from: "2025-05-18",
+          to: "2025-05-18",
+          days: "1",
+          doctor: " هشام العزب      ",
+          title: "طب بشري",
+          date: "2025-05-18"
+        },
+        {
+          leaveCode: "GSL59953889976",
+          idNumber: "1135758827",
+          name: "   وليد علي حسن عسيري         ",
+          from: "2025-06-25",
+          to: "2025-06-25",
+          days: "1",
+          doctor: " أجمل حسين       ",
+          title: "طب بشري",
+          date: "2025-06-25"
+        },
+        {
+          leaveCode: "GSL59953212832",
+          idNumber: "1126483781",
+          name: "عبدالرحمن احمد محمد الزهراني",
+          from: "2025-06-26",
+          to: "2025-06-26",
+          days: "1",
+          doctor: " أجمل حسين       ",
+          title: "طب بشري",
+          date: "2025-06-26"
+        },
+        {
+          leaveCode: "GSL55563126943",
+          idNumber: "1093345757",
+          name: "  منى علي جابر جعفري  ",
+          from: "2025-06-25",
+          to: "2025-06-25",
+          days: "1",
+          doctor: "  شيخ اخلاق       ",
+          title: "طب بشري",
+          date: "2025-06-25"
+        },
+        {
+          leaveCode: "GSL59966992314",
+          idNumber: "1122828492",
+          name: "  عماد جمعان علي جيزاني  ",
+          from: "2025-06-26",
+          to: "2025-06-26",
+          days: "1",
+          doctor: " أجمل حسين       ",
+          title: "طب بشري",
+          date: "2025-06-26"
+        },
+        {
+          leaveCode: "GSL59953212832",
+          idNumber: "1125041663",
+          name: "  غانم خالد غازي الحربي ",
+          from: "2025-06-27",
+          to: "2025-06-27",
+          days: "1",
+          doctor: " أجمل حسين       ",
+          title: "طب بشري",
+          date: "2025-06-27"
+        },
+        {
+          leaveCode: "GSL59953212832",
+          idNumber: "1123920918",
+          name: "  احمد موسى محمد خبراني  ",
+          from: "2025-06-28",
+          to: "2025-06-29",
+          days: "2",
+          doctor: " أجمل حسين       ",
+          title: "طب بشري",
+          date: "2025-06-28"
+        },
+        {
+          leaveCode: "GSL59953255328",
+          idNumber: "1126483781",
+          name: "عبدالرحمن احمد محمد الزهراني",
+          from: "2025-06-28",
+          to: "2025-06-28",
+          days: "1",
+          doctor: " أجمل حسين       ",
+          title: "طب بشري",
+          date: "2025-06-28"
+        },
+        {
+          leaveCode: "GSL59953255328",
+          idNumber: "1090361872",
+          name: " هنادي محمد بالغيث القرني  ",
+          from: "2025-06-28",
+          to: "2025-06-28",
+          days: "1",
+          doctor: " أجمل حسين       ",
+          title: "طب بشري",
+          date: "2025-06-28"
+        },
+        {
+          leaveCode: "GSL59953255328",
+          idNumber: "1099217729",
+          name: " رغد محمد سالم الحارثي     ",
+          from: "2025-06-28",
+          to: "2025-06-28",
+          days: "1",
+          doctor: " محمد جمال كمال خلف        ",
+          title: "طب بشري",
+          date: "2025-06-28"
+        },
+        {
+          leaveCode: "GSL59953255328",
+          idNumber: "1109313005",
+          name: "  مهند عبدالعزيز عويمر العمري     ",
+          from: "2025-06-22",
+          to: "2025-06-25",
+          days: "4",
+          doctor: " علي بكر محمد خلف        ",
+          title: "طب بشري",
+          date: "2025-06-22"
+        },
+        {
+          leaveCode: "GSL59953255328",
+          idNumber: "1109101855",
+          name: "  حنان علي حسين عطيف    ",
+          from: "2025-06-29",
+          to: "2025-06-29",
+          days: "1",
+          doctor: "  علي بكر محمد خلف       ",
+          title: "طب بشري",
+          date: "2025-06-29"
+        },
+        {
+          leaveCode: "GSL59953255328",
+          idNumber: "1087259485",
+          name: " تركي يحيى محمد غروي      ",
+          from: "2025-06-29",
+          to: "2025-06-30",
+          days: "2",
+          doctor: " محمد جمال كمال خلف        ",
+          title: "طب بشري",
+          date: "2025-06-29"
+        },
+        {
+          leaveCode: "GSL99643815764",
+          idNumber: "1107272831",
+          name: " رهام قاسم عثمان جتيم     ",
+          from: "2025-07-01",
+          to: "2025-07-30",
+          days: "30",
+          doctor: " ربى جمل-الليل           ",
+          title: "طب بشري",
+          date: "2025-07-01"
+        },
+        {
+          leaveCode: "GSL59953255328",
+          idNumber: "1123619569",
+          name: "   رزان محمود محمد الحربي   ",
+          from: "2025-07-01",
+          to: "2025-07-01",
+          days: "1",
+          doctor: " محمد جمال كمال خلف        ",
+          title: "طب بشري",
+          date: "2025-07-01"
+        },
+        {
+          leaveCode: "GSL59953255328",
+          idNumber: "1119961652",
+          name: " شروق جابر عبده الصامطي  ",
+          from: "2025-07-01",
+          to: "2025-07-01",
+          days: "1",
+          doctor: " بشير احمد خان الله ديلو        ",
+          title: "طب بشري",
+          date: "2025-07-01"
+        },
+        {
+          leaveCode: "GSL99643815764",
+          idNumber: "1122139015",
+          name: "    خالد عزيز محمد المالكي  ",
+          from: "2025-07-01",
+          to: "2025-07-01",
+          days: "1",
+          doctor: " هشام محمد العزب        ",
+          title: "طب بشري",
+          date: "2025-07-01"
+        },
+        {
+          leaveCode: "GSL59953255328",
+          idNumber: "1130684036",
+          name: " جنى طارق سعيد الحربي     ",
+          from: "2025-07-02",
+          to: "2025-07-02",
+          days: "1",
+          doctor: "   عادل محمد فتحي",
+          title: "طب بشري",
+          date: "2025-07-02"
+        },
+        {
+          leaveCode: "GSL59953188733",
+          idNumber: "1090361872",
+          name: " هنادي محمد بالغيث القرني  ",
+          from: "2025-07-02",
+          to: "2025-07-03",
+          days: "2",
+          doctor: "  شيخ محمد حسن اخلاق       ",
+          title: "طب بشري",
+          date: "2025-07-02"
+        },
+        {
+          leaveCode: "GSL88942800531",
+          idNumber: "1123920918",
+          name: " احمد موسى محمد خبراني     ",
+          from: "2025-07-03",
+          to: "2025-07-03",
+          days: "1",
+          doctor: "  شيخ محمد حسن اخلاق       ",
+          title: "طب بشري",
+          date: "2025-07-03"
+        },
+        {
+          leaveCode: "GPL59953185543",
+          idNumber: "1090020254",
+          name: "   زينب محمد يوسف المدني       ",
+          from: "2025-07-03",
+          to: "2025-07-03",
+          days: "1",
+          doctor: " احمد سالم جمعان السعدي ",
+          title: "طب بشري",
+          date: "2025-07-03"
+        },
+        {
+          leaveCode: "SPL59533845572",
+          idNumber: "2129014136",
+          name: "  حسن هبه عبيد عثمان      ",
+          from: "2025-07-06",
+          to: "2025-07-07",
+          days: "2",
+          doctor: "احمد سالم جمعان السعدي",
+          title: "طب بشري",
+          date: "2025-07-06"
+        },
+        {
+          leaveCode: "GSL59533880912",
+          idNumber: "1125336295",
+          name: "  احمد عبدالرزاق احمد شيبان      ",
+          from: "2025-07-02",
+          to: "2025-07-02",
+          days: "1",
+          doctor: "   احمد سالم جمعان السعدي      ",
+          title: "طب بشري",
+          date: "2025-07-02"
+        },
+        {
+          leaveCode: "SPL59533880912",
+          idNumber: "1093345757",
+          name: "منى علي جابر جعفري ",
+          from: "2025-07-02",
+          to: "2025-07-02",
+          days: "1",
+          doctor: "خواجة اعجاز أحمد ",
+          title: "طب بشري",
+          date: "2025-07-02"
+        },
+        {
+          leaveCode: "SPL22845943821",
+          idNumber: "1093345757",
+          name: "  منى علي جابر جعفري          ",
+          from: "2025-07-04",
+          to: "2025-07-04",
+          days: "1",
+          doctor: "خواجة اعجاز أحمد ",
+          title: "طب بشري",
+          date: "2025-07-04"
+        },
+        {
+          leaveCode: "SPL55284138801",
+          idNumber: "1079838726",
+          name: "حسين مجلي أحمد النجعي",
+          from: "2025-07-06",
+          to: "2025-07-06",
+          days: "1",
+          doctor: "خواجة اعجاز أحمد ",
+          title: "طب بشري",
+          date: "2025-07-06"
+        },
+        {
+          leaveCode: "SPL55228161394",
+          idNumber: "1090361872",
+          name: "هنادي محمد بالغيث القرني   ",
+          from: "2025-07-06",
+          to: "2025-07-07",
+          days: "2",
+          doctor: "رانية محمد عثمان ابوشنب ",
+          title: "طب بشري",
+          date: "2025-07-06"
+        },
+        {
+          leaveCode: "SPL88867438128",
+          idNumber: "1090361708",
+          name: "  هناء محمد بالغيث القرني ",
+          from: "2025-07-09",
+          to: "2025-07-09",
+          days: "1",
+          doctor: "رانية محمد عثمان ابوشنب ",
+          title: "طب بشري",
+          date: "2025-07-09"
+        },
+        {
+          leaveCode: "SPL88597413228",
+          idNumber: "1136689815",
+          name: "  فاطمة اسماعيل مجلي مجلي    ",
+          from: "2025-07-12",
+          to: "2025-07-12",
+          days: "1",
+          doctor: "رانية محمد عثمان ابوشنب ",
+          title: "طب بشري",
+          date: "2025-07-12"
+        },
+        {
+          leaveCode: "SPL99621375466",
+          idNumber: "1136689823",
+          name: "   ليلى إسماعيل مجلي مجلي    ",
+          from: "2025-07-12",
+          to: "2025-07-12",
+          days: "1",
+          doctor: "رانية محمد عثمان ابوشنب ",
+          title: "طب بشري",
+          date: "2025-07-12"
+        },
+        {
+          leaveCode: "SPL99622845321",
+          idNumber: "1124974443",
+          name: "   محمد احمد محمد عسيري    ",
+          from: "2025-07-12",
+          to: "2025-07-12",
+          days: "1",
+          doctor: "رانية محمد عثمان ابوشنب ",
+          title: "طب بشري",
+          date: "2025-07-12"
+        },
+        {
+          leaveCode: "GSL88842395512",
+          idNumber: "1094053913",
+          name: "    اثير احمد محمد عسيري       ",
+          from: "2025-07-12",
+          to: "2025-07-12",
+          days: "1",
+          doctor: "محمد جمال كمال خلف    ",
+          title: "طب بشري",
+          date: "2025-07-12"
+        },
+        {
+          leaveCode: "GSL88842395889",
+          idNumber: "1119961652",
+          name: "    شروق جابر عبده الصامطي        ",
+          from: "2025-07-13",
+          to: "2025-07-13",
+          days: "1",
+          doctor: "محمد جمال كمال خلف    ",
+          title: "طب بشري",
+          date: "2025-07-13"
+        },
+        {
+          leaveCode: "SPL99622855521",
+          idNumber: "1135758827",
+          name: "وليد علي حسن عسيري",
+          from: "2025-07-13",
+          to: "2025-07-13",
+          days: "1",
+          doctor: "   رانية محمد عثمان ابوشنب     ",
+          title: "طب بشري",
+          date: "2025-07-13"
+        },
+        {
+          leaveCode: "SPL99962236431",
+          idNumber: "1124974443",
+          name: " محمد احمد محمد عسيري  ",
+          from: "2025-07-13",
+          to: "2025-07-13",
+          days: "1",
+          doctor: "   احمد سالم جمعان السعدي        ",
+          title: "طب بشري",
+          date: "2025-07-13"
+        },
+        {
+          leaveCode: "SPL99962236431",
+          idNumber: "1119978573",
+          name: " سعيد محمد سعيد الغامدي   ",
+          from: "2025-07-13",
+          to: "2025-07-13",
+          days: "1",
+          doctor: "مجدي محمد الشيخ",
+          title: "طب بشري",
+          date: "2025-07-13"
+        },
+        {
+          leaveCode: "SPL55536125344",
+          idNumber: "1098479858",
+          name: " حسين علي قاسم صائغ     ",
+          from: "2025-07-13",
+          to: "2025-07-13",
+          days: "1",
+          doctor: "رانية كمال طاهر",
+          title: "طب بشري",
+          date: "2025-07-13"
+        },
+        {
+          leaveCode: "SPL85566312842",
+          idNumber: "1044935672",
+          name: "  سارة موسى يحيى الحدري       ",
+          from: "2025-07-11",
+          to: "2025-07-11",
+          days: "1",
+          doctor: "عادل نعيم اسكندر    ",
+          title: "طب بشري",
+          date: "2025-07-11"
+        },
+        {
+          leaveCode: "GSL85566312842",
+          idNumber: "1105523722",
+          name: "  مها مقبل المطيري           ",
+          from: "2025-07-13",
+          to: "2025-07-17",
+          days: "5",
+          doctor: "عادل نعيم محمد اسكندر    ",
+          title: "طب بشري",
+          date: "2025-07-13"
+        },
+        {
+          leaveCode: "SPL85566312881",
+          idNumber: "1130684036",
+          name: "جنى طارق سعيد الحربي",
+          from: "2025-07-16",
+          to: "2025-07-16",
+          days: "1",
+          doctor: "عادل نعيم اسكندر    ",
+          title: "طب بشري",
+          date: "2025-07-16"
+        },
+        {
+          leaveCode: "SPL55233497251",
+          idNumber: "1135758827",
+          name: "وليد علي حسن عسيري   ",
+          from: "2025-07-16",
+          to: "2025-07-16",
+          days: "1",
+          doctor: "أجمل حسين محمد السعدي",
+          title: "طب بشري",
+          date: "2025-07-16"
+        },
+        {
+          leaveCode: "SPL88364284551",
+          idNumber: "1084008141",
+          name: "فهد ابراهيم عيسى الصبياني    ",
+          from: "2025-07-16",
+          to: "2025-07-16",
+          days: "1",
+          doctor: "رانية محمد عثمان أبوشنب      ",
+          title: "طب بشري",
+          date: "2025-07-16"
+        },
+        {
+          leaveCode: "SPL88364284551",
+          idNumber: "1084008141",
+          name: "فهد ابراهيم عيسى الصبياني    ",
+          from: "2025-07-16",
+          to: "2025-07-16",
+          days: "1",
+          doctor: "رانية محمد عثمان أبوشنب      ",
+          title: "طب بشري",
+          date: "2025-07-16"
+        },
+        {
+          leaveCode: "SPL10004237521",
+          idNumber: "1133692424",
+          name: "شهد محمد مرزوق الجدعاني       ",
+          from: "2025-07-15",
+          to: "2025-07-15",
+          days: "1",
+          doctor: "رانية محمد عثمان أبوشنب      ",
+          title: "طب بشري",
+          date: "2025-07-15"
+        },
+        {
+          leaveCode: "SPL10004238821",
+          idNumber: "1068583424",
+          name: "فاطمه يحي عامر العسيري          ",
+          from: "2025-07-17",
+          to: "2025-07-17",
+          days: "1",
+          doctor: "رانية محمد عثمان أبوشنب      ",
+          title: "طب بشري",
+          date: "2025-07-17"
+        },
+        {
+          leaveCode: "SPL10004233321",
+          idNumber: "1089968323",
+          name: "هتون مسلم عبدالمعتني الفارسي             ",
+          from: "2025-07-07",
+          to: "2025-07-08",
+          days: "2",
+          doctor: "رانية محمد عثمان أبوشنب      ",
+          title: "طب بشري",
+          date: "2025-07-07"
+        },
+        {
+          leaveCode: "SPL25536124312",
+          idNumber: "1089968323",
+          name: " هتون مسلم عبدالمعتني الفارسي            ",
+          from: "2025-07-14",
+          to: "2025-07-14",
+          days: "1",
+          doctor: "رانية محمد عثمان أبوشنب      ",
+          title: "طب بشري",
+          date: "2025-07-14"
+        },
+        {
+          leaveCode: "SPL25536156631",
+          idNumber: "1125110716",
+          name: "سارا فيصل خلف الشيخ ",
+          from: "2025-07-19",
+          to: "2025-07-19",
+          days: "1",
+          doctor: "رانية محمد عثمان أبوشنب      ",
+          title: "طب بشري",
+          date: "2025-07-19"
+        },
+        {
+          leaveCode: "GSL25536156630",
+          idNumber: "1129239479",
+          name: "ليان ايمن الرحيلي    ",
+          from: "2025-07-06",
+          to: "2025-07-06",
+          days: "1",
+          doctor: "طارق جابر محمد العقيل",
+          title: "طب بشري",
+          date: "2025-07-16"
+        },
+         {
+          leaveCode: "SPL99971344231",
+          idNumber: "1124974443",
+          name: "محمد احمد محمد عسيري      ",
+          from: "2025-07-19",
+          to: "2025-07-20",
+          days: "2",
+          doctor: "  احمد سالم جمعان السعدي ",
+          title: "طب بشري",
+          date: "2025-07-19"
+        },
+        {
+          leaveCode: "PSL25050413877",
+          idNumber: "1044935656",
+          name: " رسيل موسى يحي الحدري         ",
+          from: "2025-07-19",
+          to: "2025-07-19",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-19"
+        },
+        {
+          leaveCode: "PSL25050413878",
+          idNumber: "1124563972",
+          name: "  اسامه حمد عايض ال صلاح           ",
+          from: "2025-07-20",
+          to: "2025-07-20",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-20"
+        },
+        {
+          leaveCode: "PSL25050413858",
+          idNumber: "1097131021",
+          name: "  هيف ظافر آل سليم               ",
+          from: "2025-07-21",
+          to: "2025-07-21",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-21"
+        },
+        {
+          leaveCode: "PSL25050413818",
+          idNumber: "1122163486",
+          name: "لارا رائد حسين شربتلي",
+          from: "2025-06-23",
+          to: "2025-06-23",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-06-23"
+        },
+        {
+          leaveCode: "PSL25053413818",
+          idNumber: "1126483781",
+          name: " عبدالرحمن احمد محمد الزهراني  ",
+          from: "2025-07-22",
+          to: "2025-07-22",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-22"
+        },
+        {
+          leaveCode: "PSL25050113818",
+          idNumber: "1128405246",
+          name: " ريما صالح محمد بارعيده  ",
+          from: "2025-07-22",
+          to: "2025-07-22",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-22"
+        },
+        {
+          leaveCode: "PSL25250413811",
+          idNumber: "1095698039",
+          name: "أحمد علي أحمد غروي ",
+          from: "2025-07-20",
+          to: "2025-07-22",
+          days: "3",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-20"
+        },
+        {
+          leaveCode: "PSL25250413711",
+          idNumber: "1115379545",
+          name: "نورة عبدالله سعد القحطاني",
+          from: "2025-07-23",
+          to: "2025-07-23",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-23"
+        },
+        {
+          leaveCode: "PSL25250423811",
+          idNumber: "1116806926",
+          name: "امجاد عامر العويد    ",
+          from: "2025-07-23",
+          to: "2025-07-23",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-23"
+        },
+        {
+          leaveCode: "PSL25250433811",
+          idNumber: "1122428798",
+          name: "ابتسام علي محمد الشهري",
+          from: "2025-07-03",
+          to: "2025-07-03",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-03"
+        },
+        {
+          leaveCode: "PSL25250433967",
+          idNumber: "1122428798",
+          name: "ابتسام علي محمد الشهري",
+          from: "2025-07-05",
+          to: "2025-07-05",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-05"
+        },
+        {
+          leaveCode: "PSL25250442317",
+          idNumber: "1122428798",
+          name: "ابتسام علي محمد الشهري",
+          from: "2025-07-09",
+          to: "2025-07-09",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-09"
+        },
+        {
+          leaveCode: "PSL25250444738",
+          idNumber: "1122428798",
+          name: "ابتسام علي محمد الشهري",
+          from: "2025-07-13",
+          to: "2025-07-13",
+          days: "1",
+          doctor: "  ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري",
+          date: "2025-07-13"
+        },
+        {
+          leaveCode: "PSL68223189772",
+          idNumber: "1122428798",
+          name: "ابتسام علي محمد الشهري",
+          from: "2025-07-15",
+          to: "2025-07-15",
+          days: "1",
+          doctor: "خواجة اعجاز أحمد     ",
+          title: "طب بشري",
+          date: "2025-07-15"
+        },
+        {
+          leaveCode: "PSL68223167459",
+          idNumber: "1122428798",
+          name: "ابتسام علي محمد الشهري",
+          from: "2025-07-18",
+          to: "2025-07-18",
+          days: "1",
+          doctor: "خواجة اعجاز أحمد     ",
+          title: "طب بشري",
+          date: "2025-07-18"
+        },
+        {
+          leaveCode: "PSL68223426678",
+          idNumber: "1122428798",
+          name: "ابتسام علي محمد الشهري",
+          from: "2025-07-22",
+          to: "2025-07-23",
+          days: "2",
+          doctor: "خواجة اعجاز أحمد  ",
+          title: "طب بشري",
+          date: "2025-07-22"
+        },
+        {
+          leaveCode: "PSL68223426672",
+          idNumber: "1107631374",
+          name: "رناد احمد محمد عسيري   ",
+          from: "2025-07-24",
+          to: "2025-07-24",
+          days: "1",
+          doctor: "خواجة اعجاز أحمد  ",
+          title: "طب بشري",
+          date: "2025-07-24"
+        },
+        {
+          leaveCode: "PSL68223426674",
+          idNumber: "1135758827",
+          name: "وليد علي حسن عسيري      ",
+          from: "2025-07-24",
+          to: "2025-07-24",
+          days: "1",
+          doctor: "حمد جشيم الدين",
+          title: "أخصائي العيون ",
+          date: "2025-07-24"
+        },
+        {
+          leaveCode: "PSL23223426674",
+          idNumber: "1082959758",
+          name: "محمد حسين خرشان العمري",
+          from: "2025-07-27",
+          to: "2025-07-28",
+          days: "2",
+          doctor: "رانية محمد عثمان أبوشنب  ",
+          title: "طب بشري  ",
+          date: "2025-07-27"
+        },
+        {
+          leaveCode: "PSL23223426174",
+          idNumber: "2181958295",
+          name: "يمنى سليم علي الحربي    ",
+          from: "2025-07-22",
+          to: "2025-07-22",
+          days: "1",
+          doctor: " وليد عبدالهادي طلبة    ",
+          title: "طب بشري  ",
+          date: "2025-07-22"
+        },
+        {
+          leaveCode: "PSL23223426385",
+          idNumber: "2181958295",
+          name: "يمنى سليم علي الحربي    ",
+          from: "2025-07-24",
+          to: "2025-07-24",
+          days: "1",
+          doctor: "وليد عبدالهادي طلبة     ",
+          title: "طب بشري  ",
+          date: "2025-07-24"
+        },
+        {
+          leaveCode: "PSL68223426671",
+          idNumber: "2181958295",
+          name: "يمنى سليم علي الحربي    ",
+          from: "2025-07-08",
+          to: "2025-07-08",
+          days: "1",
+          doctor: " وليد محمد حسين النجار    ",
+          title: "طب بشري  ",
+          date: "2025-07-08"
+        },
+        {
+          leaveCode: "PSL68223445761",
+          idNumber: "2181958295",
+          name: "يمنى سليم علي الحربي    ",
+          from: "2025-07-10",
+          to: "2025-07-10",
+          days: "1",
+          doctor: "وليد محمد حسين النجار",
+          title: "طب بشري  ",
+          date: "2025-07-10"
+        },
+        {
+          leaveCode: "GSL25060111760",
+          idNumber: "1068583424",
+          name: "فاطمه يحي عامر العسيري",
+          from: "2025-07-27",
+          to: "2025-07-31",
+          days: "5",
+          doctor: "محمد جمال كمال خلف ",
+          title: "طب بشري  ",
+          date: "2025-07-27"
+        },
+        {
+          leaveCode: "PSL68221158363",
+          idNumber: "2181958295",
+          name: "يمنى سليم علي الحربي    ",
+          from: "2025-06-24",
+          to: "2025-06-24",
+          days: "1",
+          doctor: " السيد عبدالعزيز محمد    ",
+          title: "طب بشري  ",
+          date: "2025-06-24"
+        },
+        {
+          leaveCode: "PSL68235448926",
+          idNumber: "2181958295",
+          name: "يمنى سليم علي الحربي    ",
+          from: "2025-06-26",
+          to: "2025-06-26",
+          days: "1",
+          doctor: "وليد محمد حسين النجار",
+          title: "طب بشري  ",
+          date: "2025-06-26"
+        },
+        {
+          leaveCode: "GSL25060111710",
+          idNumber: "1113793234",
+          name: " حمد سعود محمد البشري  ",
+          from: "2025-07-21",
+          to: "2025-07-21",
+          days: "1",
+          doctor: "محمد جمال كمال خلف ",
+          title: "طب بشري  ",
+          date: "2025-07-21"
+        },
+        {
+          leaveCode: "GSL25060111713",
+          idNumber: "1132720895",
+          name: " ذيب حسين ذيب اليامي",
+          from: "2025-07-24",
+          to: "2025-07-24",
+          days: "1",
+          doctor: "محمد جمال كمال خلف ",
+          title: "طب بشري  ",
+          date: "2025-07-24"
+        },
+        {
+          leaveCode: "PSL23223449643",
+          idNumber: "2181958295",
+          name: "يمنى سليم علي الحربي    ",
+          from: "2025-07-27",
+          to: "2025-07-27",
+          days: "1",
+          doctor: "وليد عبدالهادي طلبة     ",
+          title: "طب بشري  ",
+          date: "2025-07-27"
+        },
+        {
+          leaveCode: "SPL25060111713",
+          idNumber: "1123470807",
+          name: " حنان سعود سعيد الذيابي    ",
+          from: "2025-07-27",
+          to: "2025-07-27",
+          days: "1",
+          doctor: "عارف محمود سعفان ",
+          title: "طب بشري  ",
+          date: "2025-07-27"
+        },
+        {
+          leaveCode: "SPL25060111712",
+          idNumber: "1109313005",
+          name: " مهند عبدالعزيز عويمر العمري     ",
+          from: "2025-07-30",
+          to: "2025-07-31",
+          days: "2",
+          doctor: "محمد سامر العثمان    ",
+          title: "طب بشري  ",
+          date: "2025-07-30"
+        },
+        {
+          leaveCode: "SPL25060156740",
+          idNumber: "1099372318",
+          name: "مؤيد جمعان علي جيزاني ",
+          from: "2025-07-28",
+          to: "2025-07-29",
+          days: "2",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري  ",
+          date: "2025-07-28"
+        },
+        {
+          leaveCode: "SPL57664812460",
+          idNumber: "1093345757",
+          name: "  منى علي جابر جعفري   ",
+          from: "2025-07-30",
+          to: "2025-07-30",
+          days: "1",
+          doctor: "عارف نزير مصطفى حسان   ",
+          title: "طب بشري  ",
+          date: "2025-07-30"
+        },
+        {
+          leaveCode: "SPL57664812435",
+          idNumber: "1105658346",
+          name: "  حليمه علي حسن هزازي      ",
+          from: "2025-07-30",
+          to: "2025-07-30",
+          days: "1",
+          doctor: "عارف نزير مصطفى حسان   ",
+          title: "طب بشري  ",
+          date: "2025-07-30"
+        },
+        {
+          leaveCode: "SPL57664812434",
+          idNumber: "1125110716",
+          name: "سارا فيصل خلف الشيخ ",
+          from: "2025-07-31",
+          to: "2025-07-31",
+          days: "1",
+          doctor: " محمد مصطفى السيد حسان",
+          title: "طب الاسنان  ",
+          date: "2025-07-31"
+        },
+        {
+          leaveCode: "SPL57664812439",
+          idNumber: "1120391402",
+          name: "  بندر علي احمد عسيري   ",
+          from: "2025-07-31",
+          to: "2025-07-31",
+          days: "1",
+          doctor: "عارف نزير مصطفى حسان",
+          title: "طب بشري  ",
+          date: "2025-07-31"
+        },
+        {
+          leaveCode: "SPL57664812940",
+          idNumber: "1110939087",
+          name: "زينه عبدالرزاق احمد الشلهوب ",
+          from: "2025-07-08",
+          to: "2025-07-08",
+          days: "1",
+          doctor: "ايمان سعد محمد عبدالرحمن",
+          title: "طب بشري  ",
+          date: "2025-07-08"
+        },
+        {
+          leaveCode: "SPL57667443671",
+          idNumber: "1110939087",
+          name: "زينه عبدالرزاق احمد الشلهوب ",
+          from: "2025-07-13",
+          to: "2025-07-13",
+          days: "1",
+          doctor: "ايمان سعد محمد عبدالرحمن",
+          title: "طب بشري  ",
+          date: "2025-07-13"
+        },
+        {
+          leaveCode: "SPL57664812498",
+          idNumber: "1110939087",
+          name: "زينه عبدالرزاق احمد الشلهوب ",
+          from: "2025-07-20",
+          to: "2025-07-20",
+          days: "1",
+          doctor: "ايمان سعد محمد عبدالرحمن",
+          title: "طب بشري  ",
+          date: "2025-07-20"
+        },
+        {
+          leaveCode: "SPL57664998350",
+          idNumber: "1110939087",
+          name: "زينه عبدالرزاق احمد الشلهوب ",
+          from: "2025-07-22",
+          to: "2025-07-22",
+          days: "1",
+          doctor: "شريف عبدالمنعم كمال احمد   ",
+          title: "طب بشري  ",
+          date: "2025-07-22"
+        },
+        {
+          leaveCode: "SPL57664812432",
+          idNumber: "1110939087",
+          name: "زينه عبدالرزاق احمد الشلهوب ",
+          from: "2025-07-03",
+          to: "2025-07-03",
+          days: "1",
+          doctor: "ايمان سعد محمد عبدالرحمن",
+          title: "طب بشري  ",
+          date: "2025-07-03"
+        },
+        {
+          leaveCode: "PSL23223782520",
+          idNumber: "2181958295",
+          name: "يمنى سليم علي الحربي    ",
+          from: "2025-07-31",
+          to: "2025-07-31",
+          days: "1",
+          doctor: "وليد عبدالهادي احمد طلبة ",
+          title: "طب بشري  ",
+          date: "2025-07-31"
+        },
+        {
+          leaveCode: "PSL25250436890",
+          idNumber: "1095698039",
+          name: "أحمد علي أحمد غروي ",
+          from: "2025-07-31",
+          to: "2025-07-31",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري  ",
+          date: "2025-07-31"
+        },
+        {
+          leaveCode: "PSL25250436916",
+          idNumber: "1104829989",
+          name: "عبدالله سعيد محمد العمري ",
+          from: "2025-08-02",
+          to: "2025-08-03",
+          days: "2",
+          doctor: "احمد سالم جمعان السعدي",
+          title: "طب بشري  ",
+          date: "2025-07-02"
+        },
+        {
+          leaveCode: "SPL57664835489",
+          idNumber: "1093345757",
+          name: "  منى علي جابر جعفري   ",
+          from: "2025-08-01",
+          to: "2025-08-02",
+          days: "2",
+          doctor: "عارف نزير مصطفى حسان   ",
+          title: "طب بشري  ",
+          date: "2025-08-01"
+        },
+        {
+          leaveCode: "PSL25253618350",
+          idNumber: "1105036980",
+          name: " الوليد خالد سعيد الغامدي    ",
+          from: "2025-08-03",
+          to: "2025-08-07",
+          days: "5",
+          doctor: "ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري  ",
+          date: "2025-08-03"
+        },
+        {
+          leaveCode: "PSL25253618360",
+          idNumber: "1120391402",
+          name: "     بندر علي احمد عسيري    ",
+          from: "2025-08-03",
+          to: "2025-08-04",
+          days: "2",
+          doctor: "عارف نزير مصطفى حسان   ",
+          title: "طب بشري  ",
+          date: "2025-08-03"
+        },
+        {
+          leaveCode: "PSL25250483626",
+          idNumber: "1095698039",
+          name: "أحمد علي أحمد غروي ",
+          from: "2025-08-03",
+          to: "2025-08-03",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل    ",
+          title: "طب بشري  ",
+          date: "2025-08-03"
+        },
+        {
+          leaveCode: "SPL25704672130",
+          idNumber: "1124974443",
+          name: "محمد احمد محمد عسيري      ",
+          from: "2025-08-01",
+          to: "2025-08-01",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-01"
+        },
+        {
+          leaveCode: "SPL25704674637",
+          idNumber: "1124974443",
+          name: "محمد احمد محمد عسيري      ",
+          from: "2025-08-03",
+          to: "2025-08-03",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-03"
+        },
+        {
+          leaveCode: "SPL25704674632",
+          idNumber: "1128405246",
+          name: " ريما صالح محمد بارعيده        ",
+          from: "2025-08-03",
+          to: "2025-08-03",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-03"
+        },
+        {
+          leaveCode: "SPL25704674790",
+          idNumber: "1101867909",
+          name: "امل عبدالعزيز رشيد فرج",
+          from: "2025-08-03",
+          to: "2025-08-03",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-03"
+        },
+        {
+          leaveCode: "SPL25704674985",
+          idNumber: "1108541259",
+          name: "مهند علي جابر جعفري    ",
+          from: "2025-08-03",
+          to: "2025-08-03",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-03"
+        },
+        {
+          leaveCode: "SPL25704674974",
+          idNumber: "1128405246",
+          name: " ريما صالح محمد بارعيده        ",
+          from: "2025-08-04",
+          to: "2025-08-04",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-04"
+        },
+        {
+          leaveCode: "SPL25704677301",
+          idNumber: "1147188336",
+          name: "عبدالرحمن محمد نوار العصيمي",
+          from: "2025-07-30",
+          to: "2025-07-30",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-07-30"
+        },
+        {
+          leaveCode: "SPL25704682560",
+          idNumber: "1106024191",
+          name: "عبدالوهاب سعيد المطيري",
+          from: "2025-07-31",
+          to: "2025-07-31",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-07-31"
+        },
+        {
+          leaveCode: "SPL25704682561",
+          idNumber: "1104608532",
+          name: "سعد علي سويد العمري  ",
+          from: "2025-08-03",
+          to: "2025-08-03",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-03"
+        },
+        {
+          leaveCode: "SPL33875524380",
+          idNumber: "1134816717",
+          name: "هادي احمد هادي غروي     ",
+          from: "2025-08-01",
+          to: "2025-08-01",
+          days: "1",
+          doctor: "  عارف نزير مصطفى حسان ",
+          title: "طب بشري",
+          date: "2025-08-01"
+        },
+        {
+          leaveCode: "SPL33875525842",
+          idNumber: "1134816717",
+          name: "هادي احمد هادي غروي     ",
+          from: "2025-08-03",
+          to: "2025-08-03",
+          days: "1",
+          doctor: "  عارف نزير مصطفى حسان ",
+          title: "طب بشري",
+          date: "2025-08-03"
+        },
+        {
+          leaveCode: "GSL88946377496",
+          idNumber: "3805169004",
+          name: "محمد مالك خالد القادري ",
+          from: "2025-08-03",
+          to: "2025-08-03",
+          days: "1",
+          doctor: "عادل نعيم احمد اسكندر",
+          title: "طب بشري",
+          date: "2025-08-03"
+        },
+        {
+          leaveCode: "SPL33875525840",
+          idNumber: "1040872671",
+          name: "ابتسام عطيه الله اليزيدي     ",
+          from: "2025-08-05",
+          to: "2025-08-05",
+          days: "1",
+          doctor: "  نذير أحمد خوسا    ",
+          title: "طب بشري",
+          date: "2025-08-05"
+        },
+        {
+          leaveCode: "SPL22978845460",
+          idNumber: "1128405246",
+          name: " ريما صالح محمد بارعيده        ",
+          from: "2025-08-05",
+          to: "2025-08-06",
+          days: "2",
+          doctor: "  رانية محمد عثمان ابوشنب ",
+          title: "طب بشري",
+          date: "2025-08-05"
+        },
+        {
+          leaveCode: "SPL22978845467",
+          idNumber: "1116492784",
+          name: "امل خالد خضر الثبيتي",
+          from: "2025-08-05",
+          to: "2025-08-05",
+          days: "1",
+          doctor: "  رانية محمد عثمان ابوشنب ",
+          title: "طب بشري",
+          date: "2025-08-05"
+        },
+        {
+          leaveCode: "SPL22978848940",
+          idNumber: "1044935656",
+          name: "رسيل موسى يحي الحدري    ",
+          from: "2025-08-05",
+          to: "2025-08-05",
+          days: "1",
+          doctor: "  سيده سنا إقبال       ",
+          title: "طب بشري",
+          date: "2025-08-05"
+        },
+        {
+          leaveCode: "SPL22978845462",
+          idNumber: "1032516286",
+          name: "هذال عبدالله محمد القبلي",
+          from: "2025-08-06",
+          to: "2025-08-07",
+          days: "2",
+          doctor: "  رانية محمد عثمان ابوشنب ",
+          title: "طب بشري",
+          date: "2025-08-06"
+        },
+        {
+          leaveCode: "SPL22978045422",
+          idNumber: "1116806926",
+          name: "امجاد عامر العويد   ",
+          from: "2025-08-07",
+          to: "2025-08-07",
+          days: "1",
+          doctor: "  عادل نعيم احمد اسكندر    ",
+          title: "طب بشري",
+          date: "2025-08-07"
+        },
+        {
+          leaveCode: "SPL22978848350",
+          idNumber: "1128405246",
+          name: "ريما صالح محمد بارعيده   ",
+          from: "2025-08-07",
+          to: "2025-08-07",
+          days: "1",
+          doctor: "  رانية محمد عثمان ابوشنب ",
+          title: "طب بشري",
+          date: "2025-08-07"
+        },
+        {
+          leaveCode: "SPL22978845460",
+          idNumber: "1124172253",
+          name: "رجوان خالد خضر الثبيتي    ",
+          from: "2025-08-08",
+          to: "2025-08-08",
+          days: "1",
+          doctor: "  رانية محمد عثمان ابوشنب ",
+          title: "طب بشري",
+          date: "2025-08-08"
+        },
+        {
+          leaveCode: "SPL22978845480",
+          idNumber: "1109313005",
+          name: "مهند عبدالعزيز عويمر العمري ",
+          from: "2025-08-10",
+          to: "2025-08-14",
+          days: "5",
+          doctor: "ساجدة مجدي عبدالرزاق الفقي",
+          title: "طب الأسنان",
+          date: "2025-08-10"
+        },
+        {
+          leaveCode: "SPL22978845481",
+          idNumber: "2186328031",
+          name: "نوف محمد عبدالله باعباد ",
+          from: "2025-08-09",
+          to: "2025-08-09",
+          days: "1",
+          doctor: "ساجدة مجدي عبدالرزاق الفقي",
+          title: "طب بشري",
+          date: "2025-08-09"
+        },
+        {
+          leaveCode: "SPL22978845421",
+          idNumber: "1130684036",
+          name: "جنى طارق سعيد الحربي    ",
+          from: "2025-08-10",
+          to: "2025-08-10",
+          days: "1",
+          doctor: "رانية محمد عثمان ابوشنب   ",
+          title: "طب بشري",
+          date: "2025-08-10"
+        },
+        {
+          leaveCode: "SPL22978845420",
+          idNumber: "1106024191",
+          name: "عبدالوهاب سعيد المطيري",
+          from: "2025-08-07",
+          to: "2025-08-07",
+          days: "1",
+          doctor: "رانية محمد عثمان ابوشنب   ",
+          title: "طب بشري",
+          date: "2025-08-07"
+        },
+        {
+          leaveCode: "SPL22978845489",
+          idNumber: "1112236656",
+          name: "بدور ابراهيم ياسين الحزيمي    ",
+          from: "2025-08-11",
+          to: "2025-08-11",
+          days: "1",
+          doctor: "ساجدة مجدي عبدالرزاق الفقي",
+          title: "طب بشري",
+          date: "2025-08-11"
+        },
+        {
+          leaveCode: "SPL55875663100",
+          idNumber: "1124974443",
+          name: "محمد احمد محمد عسيري",
+          from: "2025-08-11",
+          to: "2025-08-11",
+          days: "1",
+          doctor: "احمد سالم جمعان السعدي",
+          title: "طب بشري",
+          date: "2025-08-11"
+        },
+        {
+          leaveCode: "SPL55875664321",
+          idNumber: "1124974443",
+          name: "محمد احمد محمد عسيري",
+          from: "2025-08-09",
+          to: "2025-08-09",
+          days: "1",
+          doctor: "احمد سالم جمعان السعدي",
+          title: "طب بشري",
+          date: "2025-08-09"
+        },
+        {
+          leaveCode: "GSL55875664320",
+          idNumber: "1130854241",
+          name: "عبد الوهاب رده عطية الله العمري",
+          from: "2025-05-13",
+          to: "2025-05-13",
+          days: "1",
+          doctor: "احمد سالم جمعان السعدي",
+          title: "طب بشري",
+          date: "2025-05-13"
+        },
+        {
+          leaveCode: "PSL33648792430",
+          idNumber: "1134816717",
+          name: "هادي احمد هادي غروي",
+          from: "2025-08-09",
+          to: "2025-08-09",
+          days: "1",
+          doctor: "سيده سنا إقبال   ",
+          title: "طب بشري",
+          date: "2025-08-09"
+        },
+        {
+          leaveCode: "GSL25060111760",
+          idNumber: "1066607258",
+          name: " شيماء فراج سعيد ابوكلاب   ",
+          from: "2025-08-16",
+          to: "2025-08-16",
+          days: "1",
+          doctor: "محمد جمال كمال خلف     ",
+          title: "طب بشري",
+          date: "2025-08-16"
+        },
+        {
+          leaveCode: "PSL25060111720",
+          idNumber: "2129014136",
+          name: " حسن هبه عبيد عثمان      ",
+          from: "2025-08-13",
+          to: "2025-08-13",
+          days: "1",
+          doctor: "احمد سالم جمعان السعدي      ",
+          title: "طب بشري",
+          date: "2025-08-13"
+        },
+        {
+          leaveCode: "SPL57664846790",
+          idNumber: "1044935672",
+          name: " سارة موسى يحيى الحدري",
+          from: "2025-08-13",
+          to: "2025-08-13",
+          days: "1",
+          doctor: "عارف نزير مصطفى حسان",
+          title: "طب بشري",
+          date: "2025-08-13"
+        },
+        {
+          leaveCode: "PSL68223654870",
+          idNumber: "1135758827",
+          name: "  وليد علي حسن عسيري  ",
+          from: "2025-08-14",
+          to: "2025-08-14",
+          days: "1",
+          doctor: " أجمل حسين محمد السعدي  ",
+          title: "طب بشري",
+          date: "2025-08-14"
+        },
+        {
+          leaveCode: "PSL33648854972",
+          idNumber: "1134816717",
+          name: "هادي احمد هادي غروي",
+          from: "2025-08-15",
+          to: "2025-08-15",
+          days: "1",
+          doctor: "سيده سنا إقبال   ",
+          title: "طب بشري",
+          date: "2025-08-15"
+        },
+        {
+          leaveCode: "PSL33648854970",
+          idNumber: "1116466465",
+          name: "احمد حسن مجلي النجعي   ",
+          from: "2025-08-16",
+          to: "2025-08-16",
+          days: "1",
+          doctor: "سيده سنا إقبال   ",
+          title: "طب بشري",
+          date: "2025-08-16"
+        },
+        {
+          leaveCode: "SPL25704682560",
+          idNumber: "1049747882",
+          name: " سامر سليمان عبده الهوساوي       ",
+          from: "2025-08-17",
+          to: "2025-08-18",
+          days: "2",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-17"
+        },
+        {
+          leaveCode: "SPL57664848721",
+          idNumber: "1093345757",
+          name: "  منى علي جابر جعفري   ",
+          from: "2025-08-16",
+          to: "2025-08-16",
+          days: "1",
+          doctor: "خواجه اعجاز احمد مصطفى",
+          title: "طب بشري  ",
+          date: "2025-08-16"
+        },
+        {
+          leaveCode: "SPL57664848723",
+          idNumber: "1128248877",
+          name: "  رهف متعب عبدالله السيف      ",
+          from: "2025-08-14",
+          to: "2025-08-14",
+          days: "1",
+          doctor: "خواجه اعجاز احمد مصطفى",
+          title: "طب بشري  ",
+          date: "2025-08-14"
+        },
+        {
+          leaveCode: "SPL57664848701",
+          idNumber: "1116492784",
+          name: "  امل خالد خضر الثبيتي      ",
+          from: "2025-08-17",
+          to: "2025-08-17",
+          days: "1",
+          doctor: "خواجه اعجاز احمد مصطفى",
+          title: "طب بشري  ",
+          date: "2025-08-17"
+        },
+        {
+          leaveCode: "SPL25704682520",
+          idNumber: "2302089756",
+          name: "مصطفى سمير مصطفى السيد ",
+          from: "2025-08-17",
+          to: "2025-08-17",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-17"
+        },
+        {
+          leaveCode: "SPL25704682563",
+          idNumber: "1124079367",
+          name: "نوره مسفر سعيد الشمراني",
+          from: "2025-08-14",
+          to: "2025-08-14",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-14"
+        },
+        {
+          leaveCode: "SPL25704683720",
+          idNumber: "1126483781",
+          name: " عبدالرحمن احمد محمد الزهراني        ",
+          from: "2025-08-17",
+          to: "2025-08-18",
+          days: "2",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-17"
+        },
+        {
+          leaveCode: "SPL25704683710",
+          idNumber: "1125687978",
+          name: "بتول منسي معيض الزهراني",
+          from: "2025-08-16",
+          to: "2025-08-16",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-16"
+        },
+        {
+          leaveCode: "SPL25704683510",
+          idNumber: "2266590609",
+          name: "بشاير إبراهيم عبدالله نخلي   ",
+          from: "2025-08-20",
+          to: "2025-08-20",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-20"
+        },
+        {
+          leaveCode: "SPL25704683810",
+          idNumber: "1108541259",
+          name: "مهند علي جابر جعفري    ",
+          from: "2025-08-17",
+          to: "2025-08-17",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-17"
+        },
+        {
+          leaveCode: "SPL25704683780",
+          idNumber: "1197389081",
+          name: " مشاعل حسين مساوى بكيلي  ",
+          from: "2025-08-14",
+          to: "2025-08-14",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-14"
+        },
+        {
+          leaveCode: "SPL25704683789",
+          idNumber: "1089962896",
+          name: " فاتن محمد عوضه الشهراني     ",
+          from: "2025-08-18",
+          to: "2025-08-18",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-18"
+        },
+        {
+          leaveCode: "SPL25704686320",
+          idNumber: "1089962896",
+          name: " فاتن محمد عوضه الشهراني     ",
+          from: "2025-08-19",
+          to: "2025-08-19",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-19"
+        },
+        {
+          leaveCode: "SPL25704686326",
+          idNumber: "1111622070",
+          name: "مبارك عبيد مفرج الدوسري",
+          from: "2025-08-20",
+          to: "2025-08-20",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-20"
+        },
+        {
+          leaveCode: "SPL25704686366",
+          idNumber: "1116239094",
+          name: "سهام عبدالرحمن المطيري    ",
+          from: "2025-08-21",
+          to: "2025-08-21",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-21"
+        },
+        {
+          leaveCode: "SPL25704897210",
+          idNumber: "1116239094",
+          name: "سهام عبدالرحمن المطيري    ",
+          from: "2025-08-24",
+          to: "2025-08-24",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-24"
+        },
+        {
+          leaveCode: "SPL25704387540",
+          idNumber: "1090020254",
+          name: "زینب محمد يوسف المدني",
+          from: "2025-07-24",
+          to: "2025-07-24",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-07-24"
+        },
+        {
+          leaveCode: "SPL25704686326",
+          idNumber: "1068583424",
+          name: "فاطمه يحي عامر العسيري",
+          from: "2025-08-20",
+          to: "2025-08-20",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-20"
+        },
+        {
+          leaveCode: "SPL25704686366",
+          idNumber: "1105658346",
+          name: " حليمه علي حسن هزازي  ",
+          from: "2025-08-07",
+          to: "2025-08-07",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-07"
+        },
+        {
+          leaveCode: "SPL25704686340",
+          idNumber: "1125336295",
+          name: "احمد عبد الرزاق احمد شيبان",
+          from: "2025-08-22",
+          to: "2025-08-22",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-22"
+        },
+        {
+          leaveCode: "SPL25704686347",
+          idNumber: "1138657828",
+          name: "منيره علي حسن عسيري",
+          from: "2025-08-24",
+          to: "2025-08-24",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-24"
+        },
+        {
+          leaveCode: "SPL25704686340",
+          idNumber: "1097131031",
+          name: "هيف ظافر محمد آل سليم   ",
+          from: "2025-08-24",
+          to: "2025-08-24",
+          days: "1",
+          doctor: "باهر عبيدات محمد العثمان   ",
+          title: "طب بشري",
+          date: "2025-08-24"
+        },
+        {
+          leaveCode: "SPL25704686320",
+          idNumber: "1101867909",
+          name: "امل عبدالعزيز رشيد فرج   ",
+          from: "2025-08-24",
+          to: "2025-08-24",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-24"
+        },
+        {
+          leaveCode: "SPL25704683749",
+          idNumber: "1101867909",
+          name: "امل عبدالعزيز رشيد فرج   ",
+          from: "2025-08-22",
+          to: "2025-08-22",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-22"
+        },
+        {
+          leaveCode: "SPL25704686438",
+          idNumber: "2129014136",
+          name: "حسن هبه عبيد عثمان",
+          from: "2025-08-23",
+          to: "2025-08-23",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-23"
+        },
+        {
+          leaveCode: "SPL25704686475",
+          idNumber: "1197389081",
+          name: "مشاعل حسين مساوى بكيلي   ",
+          from: "2025-08-16",
+          to: "2025-08-16",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-16"
+        },
+        {
+          leaveCode: "GSL25704686438",
+          idNumber: "1124974443",
+          name: "محمد احمد محمد عسيري   ",
+          from: "2025-08-16",
+          to: "2025-08-16",
+          days: "1",
+          doctor: "محمد جمال كمال خلف",
+          title: "طب بشري",
+          date: "2025-08-16"
+        },
+        {
+          leaveCode: "GSL25704986530",
+          idNumber: "1124974443",
+          name: "محمد احمد محمد عسيري   ",
+          from: "2025-08-18",
+          to: "2025-08-19",
+          days: "2",
+          doctor: "محمد جمال كمال خلف",
+          title: "طب بشري",
+          date: "2025-08-18"
+        },
+        {
+          leaveCode: "GSL25727366532",
+          idNumber: "1124974443",
+          name: "محمد احمد محمد عسيري   ",
+          from: "2025-08-23",
+          to: "2025-08-23",
+          days: "1",
+          doctor: "محمد جمال كمال خلف",
+          title: "طب بشري",
+          date: "2025-08-23"
+        },
+        {
+          leaveCode: "SPL25704686646",
+          idNumber: "1089962896",
+          name: " فاتن محمد عوضه الشهراني     ",
+          from: "2025-08-26",
+          to: "2025-08-26",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-26"
+        },
+        {
+          leaveCode: "SPL25704686642",
+          idNumber: "1128374277",
+          name: "وليد مسعد عاصي الشمري",
+          from: "2025-08-23",
+          to: "2025-08-24",
+          days: "2",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-23"
+        },
+        {
+          leaveCode: "GSL25727366530",
+          idNumber: "1095698039",
+          name: "أحمد علي أحمد غروي ",
+          from: "2025-08-26",
+          to: "2025-08-26",
+          days: "1",
+          doctor: "محمد جمال كمال خلف",
+          title: "طب بشري",
+          date: "2025-08-26"
+        },
+        {
+          leaveCode: "GSL25727366540",
+          idNumber: "1122139015",
+          name: "خالد عزيز محمد المالكي",
+          from: "2025-08-25",
+          to: "2025-08-25",
+          days: "1",
+          doctor: "محمد جمال كمال خلف",
+          title: "طب بشري",
+          date: "2025-08-25"
+        },
+        {
+          leaveCode: "GSL25727347486",
+          idNumber: "1122139015",
+          name: "خالد عزيز محمد المالكي",
+          from: "2025-08-18",
+          to: "2025-08-18",
+          days: "1",
+          doctor: "ربى جمل محمد الليل   ",
+          title: "طب بشري",
+          date: "2025-08-18"
+        },
+        {
+          leaveCode: "SPL55467845160",
+          idNumber: "1093345757",
+          name: "منى علي جابر جعفري",
+          from: "2025-08-27",
+          to: "2025-08-27",
+          days: "1",
+          doctor: "باهر عبيدات محمد العثمان",
+          title: "طب بشري",
+          date: "2025-08-27"
+        },
+        {
+          leaveCode: "SPL74513985520",
+          idNumber: "1086633961",
+          name: "بيان علي حسين لبني    ",
+          from: "2025-08-28",
+          to: "2025-08-28",
+          days: "1",
+          doctor: "مجدي محمد سعد الشيخ   ",
+          title: "طب بشري",
+          date: "2025-08-28"
+        },
+        {
+          leaveCode: "SPL55884587482",
+          idNumber: "1044935672",
+          name: "سارة موسى يحيى الحدري",
+          from: "2025-08-27",
+          to: "2025-08-27",
+          days: "1",
+          doctor: "منى سعيد نجيب الفرنواني   ",
+          title: "طب بشري",
+          date: "2025-08-27"
+        },
+        {
+          leaveCode: "SPL25704684753",
+          idNumber: "1070269467",
+          name: "عبدالله ابراهيم مرعي عسيري   ",
+          from: "2025-08-28",
+          to: "2025-08-28",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل",
+          title: "طب بشري",
+          date: "2025-08-28"
+        },
+        {
+          leaveCode: "GSL25704684750",
+          idNumber: "1125336295",
+          name: "احمد عبد الرزاق احمد شيبان",
+          from: "2025-08-28",
+          to: "2025-08-28",
+          days: "1",
+          doctor: " محمد جمال كمال خلف  ",
+          title: "طب بشري",
+          date: "2025-08-28"
+        },
+        {
+          leaveCode: "SPL25704684750",
+          idNumber: "1099655993",
+          name: "مشعل حواس راكان العنزي",
+          from: "2025-08-26",
+          to: "2025-08-26",
+          days: "1",
+          doctor: "ريحان شريف محمد اسماعيل      ",
+          title: "طب بشري",
+          date: "2025-08-26"
+        },
+        {
+          leaveCode: "GSL55853988820",
+          idNumber: "1122139015",
+          name: "خالد عزيز محمد المالكي",
+          from: "2025-08-01",
+          to: "2025-08-01",
+          days: "1",
+          doctor: "عهود محمد العمودي",
+          title: "طب بشري",
+          date: "2025-08-01"
+        },
+        {
+          leaveCode: "GSL55853994273",
+          idNumber: "1122139015",
+          name: "خالد عزيز محمد المالكي",
+          from: "2025-08-05",
+          to: "2025-08-05",
+          days: "1",
+          doctor: "عهود محمد العمودي",
+          title: "طب بشري",
+          date: "2025-08-05"
+        },
+        {
+          leaveCode: "GSL55854658742",
+          idNumber: "1122139015",
+          name: "خالد عزيز محمد المالكي",
+          from: "2025-08-11",
+          to: "2025-08-12",
+          days: "2",
+          doctor: "عهود محمد العمودي",
+          title: "طب بشري",
+          date: "2025-08-11"
+        },
+        {
+          leaveCode: "GSL55854658743",
+          idNumber: "1125813889",
+          name: "احمد عادل ابراهيم سعد   ",
+          from: "2025-08-29",
+          to: "2025-08-30",
+          days: "2",
+          doctor: "احمد عادل ابراهيم سعد  ",
+          title: "طب بشري",
+          date: "2025-08-29"
+        },
+        {
+          leaveCode: "SPL55854658743",
+          idNumber: "1111622070",
+          name: "مبارك عبيد مفرج الدوسري",
+          from: "2025-08-30",
+          to: "2025-08-30",
+          days: "1",
+          doctor: "احمد سالم جمعان السعدي    ",
+          title: "طب بشري",
+          date: "2025-08-30"
+        },
+        {
+          leaveCode: "SPL55854658740",
+          idNumber: "1101403556",
+          name: "محمد عاجش سهل عبدالله    ",
+          from: "2025-08-30",
+          to: "2025-08-30",
+          days: "1",
+          doctor: "احمد عادل ابراهيم سعد  ",
+          title: "طب بشري",
+          date: "2025-08-30"
+        },
+        {
+          leaveCode: "SPL55854658780",
+          idNumber: "1139730756",
+          name: "رولا عبده عبدالله عقيلي",
+          from: "2025-08-27",
+          to: "2025-08-28",
+          days: "2",
+          doctor: " احمد سالم جمعان السعدي    ",
+          title: "طب بشري",
+          date: "2025-08-27"
+        },
+        {
+          leaveCode: "SPL55854658760",
+          idNumber: "1061260988",
+          name: "امال عبد الرحمن حامد الشهابي   ",
+          from: "2025-08-30",
+          to: "2025-08-30",
+          days: "1",
+          doctor: " احمد سالم جمعان السعدي    ",
+          title: "طب بشري",
+          date: "2025-08-30"
+        },
+        {
+          leaveCode: "SPL55854658763",
+          idNumber: "1120391402",
+          name: "بندر علي احمد عسيري",
+          from: "2025-09-01",
+          to: "2025-09-01",
+          days: "1",
+          doctor: " احمد سالم جمعان السعدي    ",
+          title: "طب بشري",
+          date: "2025-09-01"
+        },
+        {
+          leaveCode: "SPL55854658760",
+          idNumber: "1052419767",
+          name: "نايف مناحي رشدان الروقي   ",
+          from: "2025-09-01",
+          to: "2025-09-01",
+          days: "1",
+          doctor: " احمد سالم جمعان السعدي    ",
+          title: "طب بشري",
+          date: "2025-09-01"
+        },
+        {
+          leaveCode: "SPL55854658727",
+          idNumber: "1122663907",
+          name: "سلمان عوض خلف الشهري",
+          from: "2025-08-31",
+          to: "2025-08-31",
+          days: "1",
+          doctor: " احمد سالم جمعان السعدي    ",
+          title: "طب بشري",
+          date: "2025-08-31"
+        },
+        
+      ];
+      localStorage.setItem("leaveData", JSON.stringify(medicalLeaveData));
+    }
+
+    // Main Data Validation and Search Function
+    function validateAndCheckData() {
+      const identityNumberInput = document.getElementById('identityNumber');
+      const serviceCodeInput = document.getElementById('serviceCode');
+      const identityNumber = identityNumberInput.value.trim();
+      const serviceCode = serviceCodeInput.value.trim();
+      const emptyFieldsErrorMessage = document.getElementById('emptyFieldsErrorMessage');
+      const searchButton = document.getElementById('searchButton');
+      const searchButtonText = document.getElementById('searchButtonText');
+      const loadingSpinnerElement = document.getElementById('loadingSpinnerElement');
+      const errorMessageTab = document.getElementById("errorMessageTab");
+      const resultsDisplayBox = document.getElementById("resultsDisplayBox");
+      const serviceCodeContainer = document.getElementById('serviceCodeContainer');
+      const identityNumberContainer = document.getElementById('identityNumberContainer');
+
+      // Validate empty fields first
+      if (!identityNumber || !serviceCode) {
+        emptyFieldsErrorMessage.style.display = 'block';
+        serviceCodeContainer.style.marginTop = '5px'; 
+        identityNumberContainer.style.marginTop = '5px'; 
+        errorMessageTab.style.display = 'none';
+        resultsDisplayBox.style.display = 'none';
+        return;
+      } else {
+        emptyFieldsErrorMessage.style.display = 'none';
+        serviceCodeContainer.style.marginTop = ''; 
+        identityNumberContainer.style.marginTop = ''; 
+      }
+
+      // Start loading state
+      loadingSpinnerElement.style.display = 'inline-block';
+      searchButton.classList.add('loading');
+      searchButton.disabled = true;
+      errorMessageTab.style.display = "none"; 
+      resultsDisplayBox.style.display = "none";
+
+      // Simulate processing delay
+      setTimeout(() => {
+        const storedMedicalLeaveData = JSON.parse(localStorage.getItem("leaveData")) || [];
+        const searchResult = storedMedicalLeaveData.find(record => record.leaveCode === serviceCode && record.idNumber === identityNumber);
+
+        // End loading state
+        loadingSpinnerElement.style.display = 'none';
+        searchButton.classList.remove('loading');
+        searchButton.disabled = false;
+
+        // Process search results
+        if (searchResult) {
+          resultsDisplayBox.innerHTML = `
+            <div class="information-label text-bold">الاسم</div><div class="information-data text-normal">${searchResult.name.trim()}</div>
+            <div class="information-label text-bold">تاريخ إصدار تقرير الاجازة</div><div class="information-data text-normal">${searchResult.date}</div>
+            <div class="information-label text-bold">تبدأ من</div><div class="information-data text-normal">${searchResult.from}</div>
+            <div class="information-label text-bold">وحتى</div><div class="information-data text-normal">${searchResult.to}</div>
+            <div class="information-label text-bold">المدة بالأيام</div><div class="information-data text-normal">${searchResult.days}</div>
+            <div class="information-label text-bold">اسم الطبيب</div><div class="information-data text-normal">${searchResult.doctor.trim()}</div>
+            <div class="information-label text-bold">المسمى الوظيفي</div><div class="information-data text-normal">${searchResult.title.trim()}</div>
+          `;
+          resultsDisplayBox.style.display = "block";
+          errorMessageTab.style.display = "none";
+          document.getElementById('searchButton').style.display = 'none';
+          document.getElementById('backButton').style.display = 'none';
+          document.getElementById('newSearchButton').style.display = 'block';
+          document.getElementById('backToListButton').style.display = 'block';
+        } else {
+          resultsDisplayBox.style.display = "none";
+          errorMessageTab.style.display = "block";
+          document.getElementById('searchButton').style.display = 'block'; 
+          document.getElementById('backButton').style.display = 'block';
+          document.getElementById('newSearchButton').style.display = 'none';
+          document.getElementById('backToListButton').style.display = 'none';
+        }
+      }, 2000);
+    }
+
+    // Hide Empty Field Error Message
+    function hideEmptyFieldError() {
+      const emptyFieldsErrorMessage = document.getElementById('emptyFieldsErrorMessage');
+      const serviceCodeContainer = document.getElementById('serviceCodeContainer');
+      const identityNumberContainer = document.getElementById('identityNumberContainer');
+      if (emptyFieldsErrorMessage.style.display === 'block') {
+          emptyFieldsErrorMessage.style.display = 'none';
+          serviceCodeContainer.style.marginTop = ''; 
+          identityNumberContainer.style.marginTop = ''; 
+      }
+    }
+
+    // Reset Form to Initial State
+    function resetFormToInitialState() {
+      const searchButton = document.getElementById('searchButton');
+      document.getElementById('identityNumber').value = '';
+      document.getElementById('serviceCode').value = '';
+      document.getElementById('errorMessageTab').style.display = 'none';
+      document.getElementById('emptyFieldsErrorMessage').style.display = 'none';
+      document.getElementById('resultsDisplayBox').style.display = 'none';
+      document.getElementById('searchButton').style.display = 'block';
+      document.getElementById('backButton').style.display = 'block';
+      document.getElementById('newSearchButton').style.display = 'none';
+      document.getElementById('backToListButton').style.display = 'none';
+      // Reset button state completely
+      document.getElementById('loadingSpinnerElement').style.display = 'none';
+      searchButton.classList.remove('loading');
+      searchButton.disabled = false;
+      // Reset margins
+      document.getElementById('serviceCodeContainer').style.marginTop = ''; 
+      document.getElementById('identityNumberContainer').style.marginTop = ''; 
+    }
+
+    // Perform New Search Action
+    function performNewSearch() {
+      resetFormToInitialState();
+    }
+
+    // Initialize Application on Page Load
+    window.addEventListener('load', () => {
+      document.getElementById('mainHeader').classList.add('show');
+      initializeApplicationData();
+      resetFormToInitialState();
+    });
+  </script>
+</body>
+</html>
+
